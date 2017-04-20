@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="iv1350-inspect-vehicle-ext-systs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../iv1350-inspect-vehicle-ext-systs.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
