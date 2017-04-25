@@ -30,6 +30,7 @@ public class Controller {
     public double findInspection(String regNo) {
         Vehicle vehicle = new Vehicle(regNo);
         Inspection inspection = new Inspection(dbMgr.findInspectionByVehicle(vehicle));
-        return dbMgr.findInspectionByVehicle(vehicle).getInspectionCost();
+        return inspection.getInspectionCost();
+
     }
 }

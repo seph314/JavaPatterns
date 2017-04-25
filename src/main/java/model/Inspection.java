@@ -13,11 +13,13 @@ public class Inspection {
      */
     private final double inspectionCost = 399;
 
+
     public Inspection(InspectionProtocol inspectionProtocol) {
     }
 
     public double getInspectionCost() {
         return inspectionCost;
-        return
     }
+
+
 }
