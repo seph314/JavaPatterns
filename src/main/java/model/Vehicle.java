@@ -6,9 +6,13 @@ package main.java.model;
  */
 public class Vehicle {
 
-    String regNo;
+    private String regNo;
 
     public Vehicle(String regNo){
+        this.regNo = regNo;
     }
 
+    public String getRegNo() {
+        return regNo;
+    }
 }

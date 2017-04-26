@@ -1,9 +1,13 @@
 package main.java.controller;
 
 import main.java.integration.DatabaseManager;
+import main.java.integration.InspectionProtocol;
+import main.java.integration.InspectionTask;
 import main.java.model.Inspection;
 import main.java.model.Vehicle;
 import se.kth.iv1350.garage.Garage;
+
+import java.util.List;
 
 
 /**
@@ -29,8 +33,8 @@ public class Controller {
 
     public double findInspection(String regNo) {
         Vehicle vehicle = new Vehicle(regNo);
-        Inspection inspection = new Inspection(dbMgr.findInspectionByVehicle(vehicle));
+        List<InspectionTask> inspectionProtocol = dbMgr.findInspectionByVehicle(vehicle);
+        Inspection inspection = new Inspection(vehicle, inspectionProtocol);
         return inspection.getInspectionCost();
-
     }
 }
