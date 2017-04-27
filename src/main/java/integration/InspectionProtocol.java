@@ -8,6 +8,8 @@ import java.util.List;
  */
 public class InspectionProtocol {
 
+    int i = 1;
+
     private List<InspectionTask> inspectionProtocol;
 
     public InspectionProtocol() {
@@ -22,4 +24,5 @@ public class InspectionProtocol {
 
         return inspectionProtocol;
     }
+
 }

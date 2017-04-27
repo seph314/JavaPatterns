@@ -7,6 +7,7 @@ package main.java.integration;
 public class InspectionTask {
 
     private String name;
+    private int i = 1;
 
     /**
      * Creates new instance representing the specified control.
@@ -18,5 +19,9 @@ public class InspectionTask {
     }
     public String getName(){
         return this.name;
+    }
+
+    int getI() {
+        return i;
     }
 }

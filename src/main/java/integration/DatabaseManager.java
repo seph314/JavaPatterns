@@ -20,7 +20,9 @@ public class DatabaseManager {
          * Compares the entered regnumber with existing in "database"
          * men det funkar inte? varför...
          */
-       System.out.println(vehicle.getRegNo());
+
+//        Spårutskrift
+//        System.out.println(vehicle.getRegNo());
         if (scheduledVehicle.getRegNo().equals(vehicle.getRegNo())){
             InspectionProtocol inspectionProtocol = new InspectionProtocol();
             return inspectionProtocol.createDummyInspections();

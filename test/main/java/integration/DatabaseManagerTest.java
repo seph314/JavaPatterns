@@ -1,27 +1,26 @@
-package test.java.integration;
-
-import main.java.integration.DatabaseManager;
-import main.java.integration.InspectionTask;
+package main.java.integration;
 import main.java.model.Vehicle;
-
 import java.util.List;
-
 import static org.junit.Assert.*;
 
 /**
  * Created by Anders on 2017-04-26.
+ * A test class, using JUnit a framework for unit tests
  */
 public class DatabaseManagerTest {
     DatabaseManager databaseManager = new DatabaseManager();
 
     @org.junit.Before
     public void setUp() throws Exception {
-        System.out.println("Starting to test...");
+//        Spårutskrift
+//        System.out.println("Starting to test...");
+//        Kod som kommer att vara gemensam för flera olika tester i setupen skrivs här
     }
 
     @org.junit.After
     public void tearDown() throws Exception {
-        System.out.println("Finished testing.");
+//        Spårutskrift
+//        System.out.println("Finished testing.");
     }
 
     @org.junit.Test
@@ -29,7 +28,5 @@ public class DatabaseManagerTest {
         List<InspectionTask> list = databaseManager.findInspectionByVehicle(new Vehicle("ABC123"));
         String inspectionName = list.get(2).getName();
         assertEquals("Wrong inspection name", "steering", inspectionName);
-
     }
-
 }
