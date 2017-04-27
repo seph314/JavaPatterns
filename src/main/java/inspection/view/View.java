@@ -1,6 +1,6 @@
-package main.java.view;
-import main.java.controller.Controller;
-import main.java.integration.DatabaseManager;
+package inspection.view;
+import inspection.controller.Controller;
+import inspection.integration.DatabaseManager;
 
 import java.util.Scanner;
 
@@ -39,7 +39,10 @@ public class View {
                 case "new":
                     System.out.println("Enter regnumber:");
                     String regNo = in.next();
-                    System.out.println("Amount to pay: " + controller.findInspection(regNo));
+                    if(controller.findInspection(regNo) == 0.0)
+                        System.out.println("There is no booked inspection for this car");
+                    else
+                        System.out.println("Amount to pay: " + controller.findInspection(regNo));
                     break;
                 case "commands":
                     System.out.println("C O M M A N D    L I S T\n" +

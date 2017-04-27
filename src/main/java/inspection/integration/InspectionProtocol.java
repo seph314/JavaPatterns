@@ -1,4 +1,4 @@
-package main.java.integration;
+package inspection.integration;
 
 import java.util.ArrayList;
 import java.util.List;

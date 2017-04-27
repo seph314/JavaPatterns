@@ -1,9 +1,6 @@
-package main.java.startup;
+package inspection.startup;
 
-import main.java.view.View;
-import se.kth.iv1350.garage.Garage;
-
-import java.util.Date;
+import inspection.view.View;
 
 /**
  * Created by Anders on 2017-04-20.

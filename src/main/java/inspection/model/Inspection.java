@@ -1,7 +1,7 @@
-package main.java.model;
+package inspection.model;
 
-import main.java.integration.InspectionProtocol;
-import main.java.integration.InspectionTask;
+import inspection.integration.InspectionProtocol;
+import inspection.integration.InspectionTask;
 
 import java.util.ArrayList;
 import java.util.List;

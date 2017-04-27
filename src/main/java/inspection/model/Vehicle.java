@@ -1,4 +1,4 @@
-package main.java.model;
+package inspection.model;
 
 /**
  * Created by Anders on 2017-04-24.

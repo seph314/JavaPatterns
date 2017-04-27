@@ -1,6 +1,6 @@
-package main.java.integration;
+package inspection.integration;
 
-import main.java.model.Vehicle;
+import inspection.model.Vehicle;
 
 import java.util.List;
 
@@ -28,7 +28,6 @@ public class DatabaseManager {
             return inspectionProtocol.createDummyInspections();
         }
         else{
-            System.out.println("There is no booked inspection for this car");
             return null;
         }
     }

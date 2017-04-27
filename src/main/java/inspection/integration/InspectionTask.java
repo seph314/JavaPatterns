@@ -1,4 +1,4 @@
-package main.java.integration;
+package inspection.integration;
 
 /**
  * Created by Anders on 2017-04-26.

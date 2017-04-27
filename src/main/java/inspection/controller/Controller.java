@@ -1,10 +1,12 @@
-package main.java.controller;
+package inspection.controller;
 
-import main.java.integration.DatabaseManager;
-import main.java.integration.InspectionProtocol;
-import main.java.integration.InspectionTask;
-import main.java.model.Inspection;
-import main.java.model.Vehicle;
+import se.kth.iv1350.garage.Garage;
+
+import inspection.integration.DatabaseManager;
+import inspection.integration.InspectionProtocol;
+import inspection.integration.InspectionTask;
+import inspection.model.Inspection;
+import inspection.model.Vehicle;
 import se.kth.iv1350.garage.Garage;
 
 import java.util.List;
