@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Anders on 2017-04-25.
+ * The inspectionProtocol is a List of InspectionTasks
  */
 public class InspectionProtocol {
 
@@ -12,10 +12,17 @@ public class InspectionProtocol {
 
     private List<InspectionTask> inspectionProtocol;
 
+    /**
+     * constructor
+     */
     public InspectionProtocol() {
        createDummyInspections();
     }
 
+    /**
+     * creates dummy inspection list
+     * @return
+     */
     public List<InspectionTask> createDummyInspections() {
         inspectionProtocol = new ArrayList<>();
         inspectionProtocol.add(new InspectionTask("brakes"));

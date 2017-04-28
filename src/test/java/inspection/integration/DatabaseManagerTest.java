@@ -44,4 +44,6 @@ public class DatabaseManagerTest {
         int result = instance.findInspectionByVehicle(vehicle).size();
         assertEquals("Wrong number of inspection Items", expResult, result);
     }
+
+
 }
