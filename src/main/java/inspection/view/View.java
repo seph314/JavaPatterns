@@ -1,8 +1,11 @@
 package inspection.view;
 import inspection.controller.Controller;
 import inspection.integration.DatabaseManager;
-import inspection.integration.InspectionProtocol;
+import inspection.integration.InspectionTask;
 
+import java.time.YearMonth;
+import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -21,8 +24,9 @@ public class View {
                 "open       = open door and update quenumber\n" +
                 "close      = close door\n" +
                 "find       = find inspection\n" +
+                "pay        = pay with Card" +
                 "start      = start inspection\n" +
-                "commands   = shows commands" +
+                "commands   = shows commands\n" +
                 "quit       = exit program");
     }
 
@@ -31,7 +35,7 @@ public class View {
         System.out.println("Welcome! type open to open garage door\n");
         showCommandList();
         String command = "";
-        double cost;
+        double cost = 0;
         while (!command.equalsIgnoreCase("quit")) {
             command = in.nextLine();
             switch (command.toLowerCase()) {
@@ -40,10 +44,12 @@ public class View {
                     controller.nextCustomer();
                     System.out.println("Door is open");
                     break;
+
                 case "close":
                     controller.closeDoor();
                     System.out.println("Door is closed");
                     break;
+
                 case "find":
                     System.out.println("Enter regnumber:");
                     String regNo = in.next();
@@ -54,13 +60,44 @@ public class View {
                         System.out.println("Amount to pay: " + cost);
                     }
                     break;
+
+                case "pay":
+                    // creates dummy information for credit card
+                    int pin = 1234;
+                    String number = "3141 5926 5358 9793";
+                    String holder = "Anders Pettersson";
+                    YearMonth expiryDate = null;
+                    expiryDate.withYear(2020);
+                    expiryDate.withMonth(12);
+                    int CVC = 777;
+                    double payedAmount = 500;
+
+                    // prints dummy information
+                    System.out.println("Dummy credit card information already entered:\n");
+                    System.out.println( "pin" + pin +
+                                        "number" + number +
+                                        "holder" + holder +
+                                        "expiryDate" + expiryDate +
+                                        "CVC" + CVC);
+
+                    //Pay with card hanldes credit card, receipt and amount
+                    controller.payWithCard(pin, number, holder, expiryDate, CVC, cost, payedAmount);
+                    break;
+
                 case "start":
                     System.out.println("The inspection is about to start, hang on!");
-                    controller.startInspection();
+                    List<InspectionTask> inspectionProtocol = controller.startInspection();
+                    //should show one inspection at the time
+                    for (InspectionTask task : inspectionProtocol){
+                        System.out.println("Check: " + task.getName());
+                    }
+                    System.out.println("All done!\nBravissimo!");
+                    break;
 
                 case "commands":
                     showCommandList();
                     break;
+
                 default:
                     break;
             }
@@ -68,4 +105,6 @@ public class View {
 
         System.out.println("Good bye!");
     }
+
+
 }

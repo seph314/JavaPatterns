@@ -1,10 +1,12 @@
 package inspection.controller;
 
+import inspection.model.*;
 import se.kth.iv1350.garage.Garage;
 import inspection.integration.DatabaseManager;
 import inspection.integration.InspectionTask;
-import inspection.model.Inspection;
-import inspection.model.Vehicle;
+import se.kth.iv1350.payauth.CreditCard;
+
+import java.time.YearMonth;
 import java.util.List;
 
 /**
@@ -15,16 +17,23 @@ public class Controller {
 
     private Garage garage = new Garage();
     private DatabaseManager dbMgr;
-
+    private Inspection inspection;
+    private Vehicle vehicle;
 
     public Controller(DatabaseManager dbMgr) {
         this.dbMgr = dbMgr;
     }
 
+    /**
+     * Open door and update display
+     */
     public void nextCustomer() {
         garage.nextCustomer();
     }
 
+    /**
+     * Close door
+     */
     public void closeDoor() {
         garage.closeDoor();
     }
@@ -38,17 +47,28 @@ public class Controller {
      * @return returns the cost for the inspection
      */
     public double findInspection(String regNo) {
-        Vehicle vehicle = new Vehicle(regNo);
+        vehicle = new Vehicle(regNo);
         List<InspectionTask> inspectionProtocol = dbMgr.findInspectionByVehicle(vehicle);
-        Inspection inspection = new Inspection(vehicle, inspectionProtocol);
+        inspection = new Inspection(vehicle, inspectionProtocol);
         return inspection.getInspectionCost();
     }
 
     /**
-     * Starts inspection
-     * Uses the inspection created in findInspection
+     *
+     * @return a String explaining the next task in the inspection
      */
-    public void startInspection(){
+    public List<InspectionTask> startInspection(){
+        return inspection.performInspection();
+    }
+
+    /**
+     * Pay with card
+     */
+    public void payWithCard(int pin, String number, String holder, YearMonth expiryDate, int CVC, double cost, double payedAmount) {
+        CreditCard creditCard = new CreditCard(pin, number, holder, expiryDate, CVC);
+        Amount amount = new Amount(cost, payedAmount);
+        Receipt receipt = new Receipt(amount, vehicle);
+
 
     }
 }

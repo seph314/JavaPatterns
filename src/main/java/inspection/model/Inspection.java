@@ -1,6 +1,5 @@
 package inspection.model;
 
-import inspection.integration.InspectionProtocol;
 import inspection.integration.InspectionTask;
 
 import java.util.ArrayList;
@@ -31,9 +30,18 @@ public class Inspection {
     }
 
     /**
-     *
+     * Returns each task in the inspectionProtocol to the view
+     * @return
      */
-
+    public List<InspectionTask> performInspection(){
+        return inspectionProtocol;
+//        String allTasksPerformed = "All tasks perfomed\nWell done!";
+//        for (InspectionTask task : inspectionProtocol){
+//            String taskToReturn = task.getName();
+//            return taskToReturn;
+//        }
+//        return allTasksPerformed;
+    }
 
     /**
      * Returns the inspectioncost if there is an inspectionProtocol has been created
