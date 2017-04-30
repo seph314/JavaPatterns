@@ -25,9 +25,9 @@ public class InspectionProtocol {
      */
     public List<InspectionTask> createDummyInspections() {
         inspectionProtocol = new ArrayList<>();
-        inspectionProtocol.add(new InspectionTask("brakes"));
-        inspectionProtocol.add(new InspectionTask("suspension"));
-        inspectionProtocol.add(new InspectionTask("steering"));
+        inspectionProtocol.add(new InspectionTask("brakes", false));
+        inspectionProtocol.add(new InspectionTask("suspension", false));
+        inspectionProtocol.add(new InspectionTask("steering", false));
 
         return inspectionProtocol;
     }

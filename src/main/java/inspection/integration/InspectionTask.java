@@ -7,21 +7,26 @@ package inspection.integration;
 public class InspectionTask {
 
     private String name;
-    private int i = 1;
+    private boolean passOrFail = false;
 
     /**
      * Creates new instance representing the specified control.
      * @param name The name of this control.
      *
      */
-    InspectionTask(String name) {
+    InspectionTask(String name, boolean passOrFail) {
         this.name = name;
+        this.passOrFail = passOrFail;
     }
     public String getName(){
         return this.name;
     }
 
-    int getI() {
-        return i;
+    public boolean isPassOrFail() {
+        return passOrFail;
+    }
+
+    public void setPassOrFail(boolean passOrFail) {
+        this.passOrFail = passOrFail;
     }
 }

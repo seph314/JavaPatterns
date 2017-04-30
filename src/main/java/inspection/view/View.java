@@ -94,10 +94,27 @@ public class View {
                 case "start":
                     System.out.println("The inspection is about to start, hang on!");
                     List<InspectionTask> inspectionProtocol = controller.startInspection();
-                    String passOrFailInspectionTasks[] = new String[inspectionProtocol.size()];
+                    String passOrFail;
+                    // sets pass or fail for each task
                     for (InspectionTask task : inspectionProtocol){
                         System.out.println("Check: " + task.getName());
+                        System.out.println("\npass or fail?");
+                        passOrFail = in.nextLine();
+                        if (passOrFail.equalsIgnoreCase("pass"))
+                            task.setPassOrFail(true);
+                        else
+                            task.setPassOrFail(false);
+                    }
+                    //prints results
+                    System.out.println("Summary of the results:\n");
+                    for(InspectionTask task : inspectionProtocol){
+                        String result;
 
+                        if(task.isPassOrFail())
+                            result = "pass";
+                        else
+                            result = "fail";
+                        System.out.println(result);
                     }
                     System.out.println("All done!\nBravissimo!");
                     break;
