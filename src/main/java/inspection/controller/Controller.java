@@ -55,8 +55,8 @@ public class Controller {
     }
 
     /**
-     *
-     * @return a String explaining the next task in the inspection
+     * Returns a inspectionProtocol list of inspections
+     * @return
      */
     public List<InspectionTask> startInspection(){
         return inspection.performInspection();

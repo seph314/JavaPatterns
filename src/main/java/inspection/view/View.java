@@ -27,7 +27,7 @@ public class View {
                 "pay        = pay with Card\n" +
                 "start      = start inspection\n" +
                 "commands   = shows commands\n" +
-                "quit       = exit program");
+                "quit       = exit program\n");
     }
 
     /**
@@ -52,7 +52,7 @@ public class View {
 
                 case "close":
                     controller.closeDoor();
-                    System.out.println("Door is closed" +
+                    System.out.println("Door is closed\n" +
                             "To Search for booked inspection in database type: find");
                     break;
 
@@ -60,12 +60,12 @@ public class View {
                     System.out.println("Enter regnumber (ABC123):");
                     String regNo = in.next();
                     if(controller.findInspection(regNo) == 0.0)
-                        System.out.println("There is no booked inspection for this car" +
+                        System.out.println("There is no booked inspection for this car\n" +
                                 "To try again type: find");
                     else{
                         cost = controller.findInspection(regNo);
                         System.out.println("Amount to pay: " + cost +
-                                "To perform payment type: pay");
+                                "\nTo perform payment type: pay");
                     }
                     break;
 
@@ -84,20 +84,20 @@ public class View {
                                         "number: " + number + "\n" +
                                         "holder: " + holder + "\n" +
                                         "expiryDate: " + expiryDate + "\n" +
-                                        "CVC: " + CVC + "\n" +
-                                        "To start inspection type: start:");
+                                        "CVC: " + CVC);
 
                     //Pay with card hanldes credit card, receipt and amount
                     String receipt = controller.payWithCard(pin, number, holder, expiryDate, CVC, cost, payedAmount);
-                    System.out.println(receipt);
+                    System.out.println(receipt + "\nTo start inspection type: start:");
                     break;
 
                 case "start":
                     System.out.println("The inspection is about to start, hang on!");
                     List<InspectionTask> inspectionProtocol = controller.startInspection();
-                    //should show one inspection at the time
+                    String passOrFailInspectionTasks[] = new String[inspectionProtocol.size()];
                     for (InspectionTask task : inspectionProtocol){
                         System.out.println("Check: " + task.getName());
+
                     }
                     System.out.println("All done!\nBravissimo!");
                     break;
