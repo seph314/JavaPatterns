@@ -12,18 +12,26 @@ public class CardTerminal {
 
     PaymentAuthorization paymentAuthorization;
 
-   private final CreditCard creditCard;
-   private final Amount amount;
-   private final Receipt receipt;
+    /**
+     * Constructor
+     */
+    public CardTerminal() {
 
-    public CardTerminal(CreditCard creditCard, Amount amount, Receipt receipt) {
-        this.creditCard = creditCard;
-        this.amount = amount;
-        this.receipt = receipt;
     }
 
-    public void newCardPayment(CreditCard creditCard, Amount amount){
+    /**
+     * Authorizes payment and returns receipt string
+     * @param creditCard
+     * @param amount
+     * @param receipt
+     * @return
+     */
+    public String newCardPayment(CreditCard creditCard, Amount amount, Receipt receipt){
         int cost = (int) amount.getCost();
-        final boolean authorized = paymentAuthorization.authorizePayment(creditCard, cost);
+        boolean authorized = true;  //paymentAuthorization.authorizePayment(creditCard, cost);
+        if (authorized)
+            return receipt.createReceiptString();
+        else
+            return "Payment denied";
     }
 }

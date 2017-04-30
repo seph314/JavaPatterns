@@ -21,12 +21,14 @@ public class Receipt {
      */
     public String createReceiptString() {
         StringBuilder builder = new StringBuilder();
+        builder.append("R E C E I P T");
+        endSection(builder);
         appendLine(builder, "Vehicle Inspection");
         endSection(builder);
 
-        LocalDateTime rentalTime = LocalDateTime.now();
+        LocalDateTime inspectionTime = LocalDateTime.now();
         builder.append("Inspection time: ");
-        appendLine(builder, rentalTime.toString());
+        appendLine(builder, inspectionTime.toString());
         endSection(builder);
 
         builder.append("Inspected vehicle: ");
@@ -34,7 +36,7 @@ public class Receipt {
         builder.append("Cost: ");
         appendLine(builder, String.valueOf(amount.getCost()));
         builder.append("Change: ");
-        appendLine(builder, "No change: payed with credit card.");
+        appendLine(builder, "0 (payed with credit card)");
         endSection(builder);
 
         return builder.toString();
