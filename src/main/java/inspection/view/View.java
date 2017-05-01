@@ -86,7 +86,8 @@ public class View {
                                         "expiryDate: " + expiryDate + "\n" +
                                         "CVC: " + CVC);
 
-                    //Pay with card hanldes credit card, receipt and amount
+                    // payWithCard handles credit card, receipt and amount
+                    // and returns a receipt string
                     String receipt = controller.payWithCard(pin, number, holder, expiryDate, CVC, cost, payedAmount);
                     System.out.println(receipt + "\nTo start inspection type: start:");
                     break;

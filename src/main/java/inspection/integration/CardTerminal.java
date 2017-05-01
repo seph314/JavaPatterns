@@ -28,7 +28,8 @@ public class CardTerminal {
      */
     public String newCardPayment(CreditCard creditCard, Amount amount, Receipt receipt){
         int cost = (int) amount.getCost();
-        boolean authorized = true;  //paymentAuthorization.authorizePayment(creditCard, cost);
+        boolean authorized = true;  // paymentAuthorization.authorizePayment(creditCard, cost);
+        System.out.println(authorized);
         if (authorized)
             return receipt.createReceiptString();
         else

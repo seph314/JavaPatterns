@@ -35,12 +35,6 @@ public class Inspection {
      */
     public List<InspectionTask> performInspection(){
         return inspectionProtocol;
-//        String allTasksPerformed = "All tasks perfomed\nWell done!";
-//        for (InspectionTask task : inspectionProtocol){
-//            String taskToReturn = task.getName();
-//            return taskToReturn;
-//        }
-//        return allTasksPerformed;
     }
 
     /**

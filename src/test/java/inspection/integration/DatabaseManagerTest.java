@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
  * Testmetoder kan ha duplicerad kod eftersom tanken är att de ska vara oberoende
  */
 public class DatabaseManagerTest {
-    DatabaseManager databaseManager = new DatabaseManager();
+    private DatabaseManager databaseManager = new DatabaseManager();
 
     @org.junit.Before
     public void setUp() throws Exception {
@@ -36,14 +36,16 @@ public class DatabaseManagerTest {
         assertEquals("Wrong inspection name", "steering", inspectionName);
     }
 
+    /**
+     * This test checks if the number of inspection tasks equals 3
+     * @throws Exception
+     */
     @org.junit.Test
     public void testNumberOfFoundInspections() throws Exception{
-        Vehicle vehicle = null;
+        Vehicle vehicle = new Vehicle("ABC123");
         DatabaseManager instance = new DatabaseManager();
         int expResult = 3;
         int result = instance.findInspectionByVehicle(vehicle).size();
         assertEquals("Wrong number of inspection Items", expResult, result);
     }
-
-
 }
