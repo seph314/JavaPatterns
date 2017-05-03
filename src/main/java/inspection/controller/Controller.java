@@ -25,6 +25,10 @@ public class Controller {
     private Inspection inspection;
     private Vehicle vehicle;
 
+    /**
+     * Controller constructor
+     * @param dbMgr
+     */
     public Controller(DatabaseManager dbMgr) {
         this.dbMgr = dbMgr;
     }
