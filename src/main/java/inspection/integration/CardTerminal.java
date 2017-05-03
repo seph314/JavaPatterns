@@ -14,7 +14,7 @@ import se.kth.iv1350.payauth.PaymentAuthorization;
  */
 public class CardTerminal {
 
-    PaymentAuthorization paymentAuthorization;
+    private PaymentAuthorization paymentAuthorization;
 
     /**
      * Constructor

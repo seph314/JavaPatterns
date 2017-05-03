@@ -5,7 +5,6 @@
 package inspection.integration;
 
 import inspection.model.Vehicle;
-
 import java.util.List;
 
 /**
