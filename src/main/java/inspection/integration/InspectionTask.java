@@ -18,18 +18,31 @@ public class InspectionTask {
      * @param name The name of this control.
      *
      */
-    InspectionTask(String name, boolean passOrFail) {
+    public InspectionTask(String name, boolean passOrFail) {
         this.name = name;
         this.passOrFail = passOrFail;
     }
+
+    /**
+     * Returs the name of a task
+     * @return
+     */
     public String getName(){
         return this.name;
     }
 
+    /**
+     * Returns true or false for handling of pass or fail of inspection task
+     * @return
+     */
     public boolean isPassOrFail() {
         return passOrFail;
     }
 
+    /**
+     * Set boolan true or false tp handle pass or fail of inspection task
+     * @param passOrFail
+     */
     public void setPassOrFail(boolean passOrFail) {
         this.passOrFail = passOrFail;
     }
