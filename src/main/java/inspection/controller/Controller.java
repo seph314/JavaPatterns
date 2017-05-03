@@ -70,14 +70,10 @@ public class Controller {
      * Pay with card
      */
     public String payWithCard(int pin, String number, String holder, YearMonth expiryDate, int CVC, double cost, double payedAmount) {
-        // creates creditCard, amount and receipt.
-        // then sends it to the card terminal
         CreditCard creditCard = new CreditCard(pin, number, holder, expiryDate, CVC);
         Amount amount = new Amount(cost, payedAmount);
         Receipt receipt = new Receipt(amount, vehicle);
-        // creates a cardTerminal
         CardTerminal cardTerminal = new CardTerminal();
         return cardTerminal.newCardPayment(creditCard, amount, receipt);
-
     }
 }
