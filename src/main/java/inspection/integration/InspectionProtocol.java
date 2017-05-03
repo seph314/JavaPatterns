@@ -1,3 +1,7 @@
+/*
+* This program is created by Anders Pettersson as a seminar task in the course
+* Object oriented design (IV1350) at KTH University.
+*/
 package inspection.integration;
 
 import java.util.ArrayList;
@@ -8,19 +12,17 @@ import java.util.List;
  */
 public class InspectionProtocol {
 
-    int i = 1;
-
     private List<InspectionTask> inspectionProtocol;
 
     /**
-     * constructor
+     * InspectionProtocol constructor
      */
     public InspectionProtocol() {
        createDummyInspections();
     }
 
     /**
-     * creates dummy inspection list
+     * creates dummy inspection list that emulates information gathered from the database
      * @return
      */
     public List<InspectionTask> createDummyInspections() {
@@ -31,5 +33,4 @@ public class InspectionProtocol {
 
         return inspectionProtocol;
     }
-
 }

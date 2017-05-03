@@ -1,3 +1,7 @@
+/*
+* This program is created by Anders Pettersson as a seminar task in the course
+* Object oriented design (IV1350) at KTH University.
+*/
 package inspection.controller;
 
 import inspection.integration.CardTerminal;

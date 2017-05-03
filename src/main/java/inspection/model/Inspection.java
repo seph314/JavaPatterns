@@ -1,3 +1,7 @@
+/*
+* This program is created by Anders Pettersson as a seminar task in the course
+* Object oriented design (IV1350) at KTH University.
+*/
 package inspection.model;
 
 import inspection.integration.InspectionTask;
@@ -12,10 +16,6 @@ import java.util.List;
 public class Inspection {
     private final Vehicle vehicle;
     private List<InspectionTask> inspectionProtocol = new ArrayList<>();
-
-    /**
-     * This inspection company has a marketing strategy where every inspection has a fixed price inspectionCost
-     */
     private final double inspectionCost = 500;
 
     /**

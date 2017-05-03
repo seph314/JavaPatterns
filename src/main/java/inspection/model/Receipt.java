@@ -1,3 +1,7 @@
+/*
+* This program is created by Anders Pettersson as a seminar task in the course
+* Object oriented design (IV1350) at KTH University.
+*/
 package inspection.model;
 
 import java.time.LocalDateTime;
@@ -9,6 +13,11 @@ public class Receipt {
     private Amount amount;
     private Vehicle vehicle;
 
+    /**
+     * Receipt constructor
+     * @param amount
+     * @param vehicle
+     */
     public Receipt(Amount amount, Vehicle vehicle) {
         this.amount = amount;
         this.vehicle = vehicle;
@@ -16,8 +25,7 @@ public class Receipt {
 
     /**
      * Creates a well-formatted string with the entire content of the receipt.
-     *
-     * @return The well-formatted receipt string.
+     * @return
      */
     public String createReceiptString() {
         StringBuilder builder = new StringBuilder();

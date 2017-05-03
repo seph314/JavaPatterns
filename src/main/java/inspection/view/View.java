@@ -1,25 +1,34 @@
+/*
+* This program is created by Anders Pettersson as a seminar task in the course
+* Object oriented design (IV1350) at KTH University.
+*/
 package inspection.view;
 
 import inspection.controller.Controller;
 import inspection.integration.DatabaseManager;
 import inspection.integration.InspectionTask;
-
 import java.time.YearMonth;
 import java.util.List;
 import java.util.Scanner;
 
 /**
- * Created by Anders on 2017-04-24.
+ * The view creates the user interface
+ * Guides the user through a inspection
+ * Displays available commands
+ * Handles input/output
  */
 public class View {
 
     private DatabaseManager dbMgr = new DatabaseManager();
     private Controller controller = new Controller(dbMgr);
 
+    /**
+     * View constructor
+     */
     public View() {
     }
 
-    void showCommandList(){
+    private void showCommandList(){
         System.out.println("C O M M A N D    L I S T\n" +
                 "open       = open door and update quenumber\n" +
                 "close      = close door\n" +
@@ -31,7 +40,8 @@ public class View {
     }
 
     /**
-     * Starts the user view and presents available commands
+     * Starts the user interface
+     * Handles the input/output and calls necessary methods in the controller
      */
     public void start() {
         Scanner in = new Scanner(System.in);
@@ -70,7 +80,6 @@ public class View {
                     break;
 
                 case "pay":
-                    // creates dummy information for credit card
                     int pin = 1234;
                     String number = "3141 5926 5358 9793";
                     String holder = "Anders Pettersson";
@@ -78,7 +87,6 @@ public class View {
                     int CVC = 777;
                     double payedAmount = 500;
 
-                    // prints dummy information
                     System.out.println("Dummy credit card information entered:\n");
                     System.out.println( "pin: " + pin + "\n" +
                                         "number: " + number + "\n" +
@@ -86,17 +94,15 @@ public class View {
                                         "expiryDate: " + expiryDate + "\n" +
                                         "CVC: " + CVC);
 
-                    // payWithCard handles credit card, receipt and amount
-                    // and returns a receipt string
                     String receipt = controller.payWithCard(pin, number, holder, expiryDate, CVC, cost, payedAmount);
-                    System.out.println(receipt + "\nTo start inspection type: start:");
+                    System.out.println(receipt + "\nTo start inspection type: start");
                     break;
 
                 case "start":
                     System.out.println("The inspection is about to start, hang on!");
                     List<InspectionTask> inspectionProtocol = controller.startInspection();
                     String passOrFail;
-                    // sets pass or fail for each task
+
                     for (InspectionTask task : inspectionProtocol){
                         System.out.println("Check: " + task.getName());
                         System.out.println("\npass or fail?");
@@ -106,8 +112,8 @@ public class View {
                         else
                             task.setPassOrFail(false);
                     }
-                    //prints results
-                    System.out.println("Summary of the results:\n");
+
+                    System.out.println("\nS U M M A R Y\n");
                     for(InspectionTask task : inspectionProtocol){
                         String result;
 
@@ -115,9 +121,10 @@ public class View {
                             result = "pass";
                         else
                             result = "fail";
-                        System.out.println(result);
+                        System.out.println(task.getName() + ": " + result);
                     }
-                    System.out.println("All done!\nBravissimo!");
+
+                    System.out.println("\nAll done!\nBravissimo!");
                     break;
 
                 case "commands":
