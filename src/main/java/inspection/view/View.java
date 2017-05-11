@@ -85,7 +85,7 @@ public class View {
                     String holder = "Anders Pettersson";
                     YearMonth expiryDate = YearMonth.now();
                     int CVC = 777;
-                    double payedAmount = 500;
+                    double payedAmount = cost;
 
                     System.out.println("Dummy credit card information entered:\n");
                     System.out.println( "pin: " + pin + "\n" +

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.BorderPane?>
 
@@ -10,9 +12,17 @@
         <items>
           <Button mnemonicParsing="false" onAction="#openButton" text="open door" />
             <Button mnemonicParsing="false" onAction="#closeButton" text="close door" />
+            <Button mnemonicParsing="false" onAction="#enterRegnumber" text="enter regnumber" />
             <Button mnemonicParsing="false" onAction="#findInspection" text="find inspection" />
+            <Button mnemonicParsing="false" onAction="#pay" text="pay" />
             <Button mnemonicParsing="false" onAction="#startInspection" text="start inspection" />
         </items>
       </ToolBar>
    </top>
+   <center>
+      <Label fx:id="printOut" text="Welcome to the inspection" BorderPane.alignment="CENTER" />
+   </center>
+   <bottom>
+      <TextField fx:id="textInput" onAction="#createStringFromInputField" BorderPane.alignment="CENTER" />
+   </bottom>
 </BorderPane>
