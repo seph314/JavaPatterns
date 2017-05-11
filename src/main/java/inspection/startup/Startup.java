@@ -17,7 +17,6 @@ public class Startup {
      */
     public static void main(String[] args) {
 
-        View view = new View();
-        view.start();
+        new View().start();
     }
 }
