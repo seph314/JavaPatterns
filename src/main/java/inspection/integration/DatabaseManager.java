@@ -24,14 +24,24 @@ public class DatabaseManager {
      * @param vehicle
      * @return
      */
-    public List<InspectionTask> findInspectionByVehicle(Vehicle vehicle){
+    public List<InspectionTask> findInspectionByVehicle(Vehicle vehicle) throws IllegalLicenseNumberException{
+        if (vehicle == null) {
+            throw new IllegalStateException("Please enter a registrationnumer (ABC123).");
+        }
 
-        if (scheduledVehicle.getRegNo().equals(vehicle.getRegNo())){
-            InspectionProtocol inspectionProtocol = new InspectionProtocol();
-            return inspectionProtocol.createDummyInspections();
+        if (!scheduledVehicle.getRegNo().equalsIgnoreCase(vehicle.getRegNo())){
+            throw new IllegalLicenseNumberException(vehicle);
         }
-        else{
-            return null;
-        }
+
+        InspectionProtocol inspectionProtocol = new InspectionProtocol();
+        return inspectionProtocol.createDummyInspections();
+
+//        if (scheduledVehicle.getRegNo().equals(vehicle.getRegNo())){
+//            InspectionProtocol inspectionProtocol = new InspectionProtocol();
+//            return inspectionProtocol.createDummyInspections();
+//        }
+//        else{
+//            return null;
+//        }
     }
 }

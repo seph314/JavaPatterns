@@ -21,6 +21,7 @@ public class View {
 
     private DatabaseManager dbMgr = new DatabaseManager();
     private Controller controller = new Controller(dbMgr);
+    private ErrorMessageHandler errorMsgHandler = new ErrorMessageHandler();
 
     /**
      * View constructor
@@ -69,6 +70,7 @@ public class View {
                 case "find":
                     System.out.println("Enter regnumber (ABC123):");
                     String regNo = in.next();
+
                     if(controller.findInspection(regNo) == 0.0)
                         System.out.println("There is no booked inspection for this car\n" +
                                 "To try again type: find");

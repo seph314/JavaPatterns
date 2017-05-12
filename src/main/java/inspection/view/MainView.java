@@ -2,6 +2,7 @@ package inspection.view;
 
 import inspection.controller.Controller;
 import inspection.integration.DatabaseManager;
+import inspection.integration.IllegalLicenseNumberException;
 import inspection.integration.InspectionTask;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -48,7 +49,7 @@ public class MainView {
         inputString = textInput.getText();
     }
 
-    public void  findInspection(){
+    public void  findInspection() throws IllegalLicenseNumberException{
         cost = controller.findInspection(inputString);
         printOut.setText("The cost is " + cost + "$\nchoose pay");
     }

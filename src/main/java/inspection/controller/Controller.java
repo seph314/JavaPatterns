@@ -5,6 +5,7 @@
 package inspection.controller;
 
 import inspection.integration.CardTerminal;
+import inspection.integration.IllegalLicenseNumberException;
 import inspection.model.*;
 import se.kth.iv1350.garage.Garage;
 import inspection.integration.DatabaseManager;
@@ -52,14 +53,20 @@ public class Controller {
      * Search for matching inspection
      * Creates inspection with found protocol and vehicle
      *
-     * @param regNo
+     * @param regNo is the registrationnumber of a Vehicle
      * @return returns the cost for the inspection
      */
     public double findInspection(String regNo) {
         vehicle = new Vehicle(regNo);
-        List<InspectionTask> inspectionProtocol = dbMgr.findInspectionByVehicle(vehicle);
+        List<InspectionTask> inspectionProtocol = null;
+        try {
+            inspectionProtocol = dbMgr.findInspectionByVehicle(vehicle);
+        } catch (IllegalLicenseNumberException e) {
+            e.printStackTrace();
+        }
         inspection = new Inspection(vehicle, inspectionProtocol);
         return inspection.getInspectionCost();
+
     }
 
     /**
