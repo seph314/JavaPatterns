@@ -9,10 +9,11 @@ import inspection.integration.IllegalLicenseNumberException;
 import inspection.model.*;
 import se.kth.iv1350.garage.Garage;
 import inspection.integration.DatabaseManager;
-import inspection.integration.InspectionTask;
+import inspection.model.InspectionTask;
 import se.kth.iv1350.payauth.CreditCard;
 
 import java.time.YearMonth;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,6 +26,7 @@ public class Controller {
     private DatabaseManager dbMgr;
     private Inspection inspection;
     private Vehicle vehicle;
+    private List<InspectionTaskObserver> inspectionTaskObservers = new ArrayList<>();
 
     /**
      * Controller constructor
@@ -74,7 +76,9 @@ public class Controller {
      * @return
      */
     public List<InspectionTask> startInspection(){
-        return inspection.performInspection();
+        List<InspectionTask> inspectionTasks = inspection.performInspection();
+        return inspectionTasks;
+        //här borde det stå ngt i stil med: inspection.addInspectionObservers(inspectionTaskObservers);
     }
 
     /**
@@ -86,5 +90,9 @@ public class Controller {
         Receipt receipt = new Receipt(amount, vehicle);
         CardTerminal cardTerminal = new CardTerminal();
         return cardTerminal.newCardPayment(creditCard, amount, receipt);
+    }
+
+    public void addInspecTaskObserver(InspectionTaskObserver obs) {
+        inspectionTaskObservers.add(obs);
     }
 }

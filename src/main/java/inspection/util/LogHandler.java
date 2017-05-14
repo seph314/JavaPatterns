@@ -26,28 +26,47 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package inspection.view;
+package inspection.util;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 
 /**
- * This class is responsible for showing error messages to the user.
+ * This class is responsible for the log.
  */
-public class ErrorMessageHandler {
+public class LogHandler {
+    private static final String LOG_FILE_NAME = "rentcar-log.txt";
+    private static final LogHandler INSTANCE = new LogHandler();
+    private PrintWriter logFile;
+
+    public static LogHandler getLogger() {
+        return INSTANCE;
+    }
+
+    private LogHandler() {
+        try {
+            logFile = new PrintWriter(new FileWriter(LOG_FILE_NAME), true);
+        } catch (IOException ex) {
+            System.out.println("Could not create logger.");
+            ex.printStackTrace();
+        }
+    }
 
     /**
-     * Displays the specified error message.
      *
-     * @param msg The error message.
+     * @param exception
      */
-    void showErrorMsg(String msg) {
-        StringBuilder errorMsgBuilder = new StringBuilder();
-        errorMsgBuilder.append(createTime());
-        errorMsgBuilder.append(", ERROR: ");
-        errorMsgBuilder.append(msg);
-        System.out.println(errorMsgBuilder);
+    public void logException(Exception exception) {
+        StringBuilder logMsgBuilder = new StringBuilder();
+        logMsgBuilder.append(createTime());
+        logMsgBuilder.append(", Exception was thrown: ");
+        logMsgBuilder.append(exception.getMessage());
+        logFile.println(logMsgBuilder);
+        exception.printStackTrace(logFile);
     }
 
     private String createTime() {

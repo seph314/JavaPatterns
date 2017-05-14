@@ -1,6 +1,7 @@
 package inspection.integration;
 
-import inspection.controller.Controller;
+import inspection.model.InspectionProtocol;
+import inspection.model.InspectionTask;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

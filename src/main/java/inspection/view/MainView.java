@@ -3,7 +3,7 @@ package inspection.view;
 import inspection.controller.Controller;
 import inspection.integration.DatabaseManager;
 import inspection.integration.IllegalLicenseNumberException;
-import inspection.integration.InspectionTask;
+import inspection.model.InspectionTask;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;

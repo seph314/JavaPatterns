@@ -4,8 +4,6 @@
 */
 package inspection.model;
 
-import inspection.integration.InspectionTask;
-
 import java.util.ArrayList;
 import java.util.List;
 

@@ -6,7 +6,8 @@ package inspection.view;
 
 import inspection.controller.Controller;
 import inspection.integration.DatabaseManager;
-import inspection.integration.InspectionTask;
+import inspection.model.InspectionTask;
+
 import java.time.YearMonth;
 import java.util.List;
 import java.util.Scanner;
@@ -22,11 +23,13 @@ public class View {
     private DatabaseManager dbMgr = new DatabaseManager();
     private Controller controller = new Controller(dbMgr);
     private ErrorMessageHandler errorMsgHandler = new ErrorMessageHandler();
+    private InspectionStatsView inspectionStatsView = new InspectionStatsView();
 
     /**
      * View constructor
      */
     public View() {
+        controller.addInspecTaskObserver(new InspectionStatsView());
     }
 
     private void showCommandList(){
@@ -37,6 +40,7 @@ public class View {
                 "pay        = pay with Card\n" +
                 "start      = start inspection\n" +
                 "commands   = shows commands\n" +
+                "show       = shows number of inspections" +
                 "quit       = exit program\n");
     }
 
@@ -70,6 +74,14 @@ public class View {
                 case "find":
                     System.out.println("Enter regnumber (ABC123):");
                     String regNo = in.next();
+//                    try {
+//                        cost = controller.findInspection(regNo);
+//                        System.out.println("Amount to pay: " + cost +
+//                                "\nTo perform payment type: pay");
+//                    }
+//                    catch (){
+//
+//                    }
 
                     if(controller.findInspection(regNo) == 0.0)
                         System.out.println("There is no booked inspection for this car\n" +
@@ -133,11 +145,15 @@ public class View {
                     showCommandList();
                     break;
 
+                case "show":
+                    inspectionStatsView.inspectionTaskPerformed();
+                    break;
+
                 default:
                     break;
             }
         }
 
-        System.out.println("Good bye!");
+        System.out.println("Thank you for using this system\n Good bye!");
     }
 }

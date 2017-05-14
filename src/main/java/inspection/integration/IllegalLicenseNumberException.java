@@ -7,22 +7,22 @@ import inspection.model.Vehicle;
  * A license number is illegal if there are no inspections for that number
  */
 public class IllegalLicenseNumberException extends Exception {
-    private Vehicle vehicleWithIllefalLicenceNumber;
+    private Vehicle vehicleWithIllegalLicenceNumber;
 
     /**
      * Constructor
-     * @param vehicleWithIllefalLicenceNumber
+     * @param vehicleWithIllegalLicenceNumber contains the illegal licensenumber
      */
-    public IllegalLicenseNumberException(Vehicle vehicleWithIllefalLicenceNumber) {
-        super("Unable to find inspection for vehicle withe regNo: " + vehicleWithIllefalLicenceNumber.getRegNo());
-        this.vehicleWithIllefalLicenceNumber = vehicleWithIllefalLicenceNumber;
+    public IllegalLicenseNumberException(Vehicle vehicleWithIllegalLicenceNumber) {
+        super("Unable to find inspection for vehicle withe regNo: " + vehicleWithIllegalLicenceNumber.getRegNo());
+        this.vehicleWithIllegalLicenceNumber = vehicleWithIllegalLicenceNumber;
     }
 
     /**
      * Getter
-     * @return
+     * @return vehicle with illegal licensenumber
      */
-    public Vehicle getVehicleWithIllefalLicenceNumber() {
-        return vehicleWithIllefalLicenceNumber;
+    public Vehicle getVehicleWithIllegalLicenceNumber() {
+        return vehicleWithIllegalLicenceNumber;
     }
 }

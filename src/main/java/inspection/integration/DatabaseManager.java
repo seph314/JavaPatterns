@@ -4,6 +4,8 @@
 */
 package inspection.integration;
 
+import inspection.model.InspectionProtocol;
+import inspection.model.InspectionTask;
 import inspection.model.Vehicle;
 import java.util.List;
 
