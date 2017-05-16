@@ -7,6 +7,8 @@ package inspection.integration;
 import inspection.model.InspectionProtocol;
 import inspection.model.InspectionTask;
 import inspection.model.Vehicle;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,35 +17,36 @@ import java.util.List;
  */
 public class DatabaseManager {
 
+    private ArrayList<Vehicle> scheduledVehicles = new ArrayList<>();
+
     /**
-     * @param scheduledVehicle symbolizes a vehicle in the database
+     * The constructor creates all vehicles scheduled for inspections
      */
-    private Vehicle scheduledVehicle = new Vehicle("ABC123");
+    public DatabaseManager() {
+
+        scheduledVehicles.add(new Vehicle("ABC123"));
+        scheduledVehicles.add(new Vehicle("IKL123"));
+        scheduledVehicles.add(new Vehicle("MDF345"));
+        scheduledVehicles.add(new Vehicle("QQK332"));
+    }
 
     /**
      * Checks if the regnumber entered matches a regnumber in the database.
      * If it does, it returns an inspectionProtocol in the form of a list
+     *
      * @param vehicle
      * @return
      */
-    public List<InspectionTask> findInspectionByVehicle(Vehicle vehicle) throws IllegalLicenseNumberException{
+    public List<InspectionTask> findInspectionByVehicle(Vehicle vehicle) throws IllegalLicenseNumberException {
+
         if (vehicle == null) {
             throw new IllegalStateException("Please enter a registrationnumer (ABC123).");
         }
 
-        if (!scheduledVehicle.getRegNo().equalsIgnoreCase(vehicle.getRegNo())){
+        if (!scheduledVehicles.contains(vehicle))
             throw new IllegalLicenseNumberException(vehicle);
-        }
 
         InspectionProtocol inspectionProtocol = new InspectionProtocol();
         return inspectionProtocol.createDummyInspections();
-
-//        if (scheduledVehicle.getRegNo().equals(vehicle.getRegNo())){
-//            InspectionProtocol inspectionProtocol = new InspectionProtocol();
-//            return inspectionProtocol.createDummyInspections();
-//        }
-//        else{
-//            return null;
-//        }
     }
 }

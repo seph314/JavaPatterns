@@ -27,4 +27,29 @@ public class Vehicle {
     public String getRegNo() {
         return regNo;
     }
+
+
+    /**
+     * Returns true if equal
+     * @param o
+     * @return
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Vehicle vehicle = (Vehicle) o;
+
+        return regNo != null ? regNo.equals(vehicle.regNo) : vehicle.regNo == null;
+    }
+
+    /**
+     * Hash code
+     * @return
+     */
+    @Override
+    public int hashCode() {
+        return regNo != null ? regNo.hashCode() : 0;
+    }
 }
