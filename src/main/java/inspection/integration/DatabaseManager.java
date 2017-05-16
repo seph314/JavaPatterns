@@ -27,7 +27,7 @@ public class DatabaseManager {
         scheduledVehicles.add(new Vehicle("ABC123"));
         scheduledVehicles.add(new Vehicle("IKL123"));
         scheduledVehicles.add(new Vehicle("MDF345"));
-        scheduledVehicles.add(new Vehicle("QQK332"));
+        scheduledVehicles.add(new Vehicle("QQQ332"));
     }
 
     /**
@@ -40,7 +40,7 @@ public class DatabaseManager {
     public List<InspectionTask> findInspectionByVehicle(Vehicle vehicle) throws IllegalLicenseNumberException {
 
         if (vehicle == null) {
-            throw new IllegalStateException("Please enter a registrationnumer (ABC123).");
+            throw new IllegalStateException("Please enter a registrationnumer (ABC123,IKL123,MDF345 or QQQ332).");
         }
 
         if (!scheduledVehicles.contains(vehicle))
