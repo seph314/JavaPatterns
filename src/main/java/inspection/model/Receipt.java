@@ -29,7 +29,7 @@ public class Receipt {
      */
     public String createReceiptString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("R E C E I P T");
+        builder.append("\nR E C E I P T");
         endSection(builder);
         appendLine(builder, "Vehicle Inspection");
         endSection(builder);

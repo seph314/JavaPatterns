@@ -7,6 +7,7 @@ import inspection.model.Vehicle;
  * A license number is illegal if there are no inspections for that number
  */
 public class IllegalLicenseNumberException extends Exception {
+
     private Vehicle vehicleWithIllegalLicenceNumber;
 
     /**

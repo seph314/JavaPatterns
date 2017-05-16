@@ -8,7 +8,7 @@ import inspection.controller.Controller;
 import inspection.integration.DatabaseManager;
 import inspection.integration.IllegalLicenseNumberException;
 import inspection.model.InspectionTask;
-import inspection.model.InspectionTaskObserver;
+import inspection.util.LogHandler;
 
 import java.time.YearMonth;
 import java.util.List;
@@ -24,14 +24,18 @@ public class View{
 
     private DatabaseManager dbMgr = new DatabaseManager();
     private Controller controller = new Controller(dbMgr);
-    private ErrorMessageHandler errorMsgHandler = new ErrorMessageHandler();
     private InspectionStatsView inspectionStatsView = new InspectionStatsView();
+    private LogHandler logHandler = LogHandler.getLogger();
 
     /**
      * View constructor
      */
     public View() {
         controller.addInspecTaskObserver(new InspectionStatsView());
+    }
+
+    private void logExceptions(Exception exception){
+        logHandler.logException(exception);
     }
 
     private void showCommandList(){
@@ -74,7 +78,7 @@ public class View{
                     break;
 
                 case "find":
-                    System.out.println("Enter regnumber (ABC123):");
+                    System.out.println("Enter regnumber (ABC123, IKL123, MDF345 or QQQ332): ");
                     String regNo = in.next();
 
                     try {
@@ -82,6 +86,7 @@ public class View{
                         System.out.println("Amount to pay: " + cost +
                                 "\nTo perform payment type: pay");
                     } catch (IllegalLicenseNumberException e) {
+                        logExceptions(e);
                         System.out.println("There is no booked inspection for regnumberr: " + e.getVehicleWithIllegalLicenceNumber().getRegNo() +
                                 "\nTo try again with a another regnumber, type: find");
                     }

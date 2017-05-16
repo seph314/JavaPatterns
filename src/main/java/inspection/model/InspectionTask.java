@@ -16,7 +16,6 @@ public class InspectionTask {
     private String name;
     private boolean passOrFail = false;
     private List<InspectionTaskObserver> inspectionTaskObservers = new ArrayList<>();
-    private InspectionTask task;
 
     /**
      * Creates new instance representing the specified control.
@@ -61,9 +60,5 @@ public class InspectionTask {
 
     public  void addInspectionObserver(InspectionTaskObserver inspectionTaskObserver){
         inspectionTaskObservers.add(inspectionTaskObserver);
-    }
-
-    public void addInspecTaskObservers(List<InspectionTaskObserver> observers){
-        inspectionTaskObservers.addAll(observers);
     }
 }

@@ -27,7 +27,6 @@ public class Controller {
     private Inspection inspection;
     private Vehicle vehicle;
     private List<InspectionTaskObserver> inspectionTaskObservers = new ArrayList<>();
-    private InspectionTask task;
 
     /**
      * Controller constructor
@@ -78,7 +77,15 @@ public class Controller {
     }
 
     /**
-     * Pay with card
+     *  Pay with card created a credit card objekt, amount objekt, receipt and card terminal instance
+     * @param pin
+     * @param number
+     * @param holder
+     * @param expiryDate
+     * @param CVC
+     * @param cost
+     * @param payedAmount
+     * @return a receipt object of the payment
      */
     public String payWithCard(int pin, String number, String holder, YearMonth expiryDate, int CVC, double cost, double payedAmount) {
         CreditCard creditCard = new CreditCard(pin, number, holder, expiryDate, CVC);
@@ -88,6 +95,10 @@ public class Controller {
         return cardTerminal.newCardPayment(creditCard, amount, receipt);
     }
 
+    /**
+     * Ads observer
+     * @param obs
+     */
     public void addInspecTaskObserver(InspectionTaskObserver obs) {
         inspectionTaskObservers.add(obs);
     }
