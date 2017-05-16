@@ -15,7 +15,7 @@ public class InspectionTask {
 
     private String name;
     private boolean passOrFail = false;
-    private List<InspectionTaskObserver> inspectionTaskOberservers = new ArrayList<>();
+    private List<InspectionTaskObserver> inspectionTaskObservers = new ArrayList<>();
     private InspectionTask task;
 
     /**
@@ -54,11 +54,16 @@ public class InspectionTask {
     }
 
     private void notifyObservers(){
-        for (InspectionTaskObserver inspTaskObs : inspectionTaskOberservers){
-            inspTaskObs.inspectionTaskPerformed();
+        for (InspectionTaskObserver inspTaskObs : inspectionTaskObservers){
+            inspTaskObs.inspectionTaskPerformed(this);
         }
     }
+
+    public  void addInspectionObserver(InspectionTaskObserver inspectionTaskObserver){
+        inspectionTaskObservers.add(inspectionTaskObserver);
+    }
+
     public void addInspecTaskObservers(List<InspectionTaskObserver> observers){
-        inspectionTaskOberservers.addAll(observers);
+        inspectionTaskObservers.addAll(observers);
     }
 }

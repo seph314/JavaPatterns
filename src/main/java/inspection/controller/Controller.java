@@ -27,6 +27,7 @@ public class Controller {
     private Inspection inspection;
     private Vehicle vehicle;
     private List<InspectionTaskObserver> inspectionTaskObservers = new ArrayList<>();
+    private InspectionTask task;
 
     /**
      * Controller constructor
@@ -58,14 +59,10 @@ public class Controller {
      * @param regNo is the registrationnumber of a Vehicle
      * @return returns the cost for the inspection
      */
-    public double findInspection(String regNo) {
+    public double findInspection(String regNo) throws IllegalLicenseNumberException {
         vehicle = new Vehicle(regNo);
         List<InspectionTask> inspectionProtocol = null;
-        try {
-            inspectionProtocol = dbMgr.findInspectionByVehicle(vehicle);
-        } catch (IllegalLicenseNumberException e) {
-            e.printStackTrace();
-        }
+        inspectionProtocol = dbMgr.findInspectionByVehicle(vehicle);
         inspection = new Inspection(vehicle, inspectionProtocol);
         return inspection.getInspectionCost();
 
@@ -78,7 +75,6 @@ public class Controller {
     public List<InspectionTask> startInspection(){
         List<InspectionTask> inspectionTasks = inspection.performInspection();
         return inspectionTasks;
-        //här borde det stå ngt i stil med: inspection.addInspectionObservers(inspectionTaskObservers);
     }
 
     /**

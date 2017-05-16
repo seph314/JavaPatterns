@@ -6,7 +6,9 @@ package inspection.view;
 
 import inspection.controller.Controller;
 import inspection.integration.DatabaseManager;
+import inspection.integration.IllegalLicenseNumberException;
 import inspection.model.InspectionTask;
+import inspection.model.InspectionTaskObserver;
 
 import java.time.YearMonth;
 import java.util.List;
@@ -18,7 +20,7 @@ import java.util.Scanner;
  * Displays available commands
  * Handles input/output
  */
-public class View {
+public class View{
 
     private DatabaseManager dbMgr = new DatabaseManager();
     private Controller controller = new Controller(dbMgr);
@@ -48,7 +50,7 @@ public class View {
      * Starts the user interface
      * Handles the input/output and calls necessary methods in the controller
      */
-    public void start() {
+    public void start(){
         Scanner in = new Scanner(System.in);
         System.out.println("Welcome! type open to open garage door\n");
         showCommandList();
@@ -74,22 +76,14 @@ public class View {
                 case "find":
                     System.out.println("Enter regnumber (ABC123):");
                     String regNo = in.next();
-//                    try {
-//                        cost = controller.findInspection(regNo);
-//                        System.out.println("Amount to pay: " + cost +
-//                                "\nTo perform payment type: pay");
-//                    }
-//                    catch (){
-//
-//                    }
 
-                    if(controller.findInspection(regNo) == 0.0)
-                        System.out.println("There is no booked inspection for this car\n" +
-                                "To try again type: find");
-                    else{
+                    try {
                         cost = controller.findInspection(regNo);
                         System.out.println("Amount to pay: " + cost +
                                 "\nTo perform payment type: pay");
+                    } catch (IllegalLicenseNumberException e) {
+                        System.out.println("There is no booked inspection for regnumberr: " + e.getVehicleWithIllegalLicenceNumber().getRegNo() +
+                                "\nTo try again with a another regnumber, type: find");
                     }
                     break;
 
@@ -117,9 +111,11 @@ public class View {
                     List<InspectionTask> inspectionProtocol = controller.startInspection();
                     String passOrFail;
 
+                    inspectionStatsView.listenToTasks(inspectionProtocol);
                     for (InspectionTask task : inspectionProtocol){
-                        System.out.println("Check: " + task.getName());
-                        System.out.println("\npass or fail?");
+
+                        System.out.println("\nCheck: " + task.getName());
+                        System.out.println("pass or fail?");
                         passOrFail = in.nextLine();
                         if (passOrFail.equalsIgnoreCase("pass"))
                             task.setPassOrFail(true);
@@ -143,10 +139,6 @@ public class View {
 
                 case "commands":
                     showCommandList();
-                    break;
-
-                case "show":
-                    inspectionStatsView.inspectionTaskPerformed();
                     break;
 
                 default:

@@ -9,6 +9,7 @@ public interface InspectionTaskObserver {
     /**
      * Invoked when a task has been inspected
      * Triggered in method setPassOrFail in class InspectionTask
+     * @param inspectionTask
      */
-    void inspectionTaskPerformed();
+    void inspectionTaskPerformed(InspectionTask inspectionTask);
 }

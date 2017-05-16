@@ -4,6 +4,8 @@
 */
 package inspection.model;
 
+import inspection.integration.IllegalLicenseNumberException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,10 +41,13 @@ public class Inspection {
      * Returns the inspectioncost if there is an inspectionProtocol has been created
      * @return the cost for inspection
      */
-    public double getInspectionCost() {
+    public double getInspectionCost() throws IllegalLicenseNumberException {
         if(inspectionProtocol != null)
             return inspectionCost;
-        else
-            return 0;
+       throw new IllegalLicenseNumberException(vehicle);
+    }
+
+    public List<InspectionTask> getInspectionProtocol() {
+        return inspectionProtocol;
     }
 }

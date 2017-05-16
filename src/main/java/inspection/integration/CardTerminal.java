@@ -14,7 +14,7 @@ import se.kth.iv1350.payauth.PaymentAuthorization;
  */
 public class CardTerminal {
 
-    private PaymentAuthorization paymentAuthorization;
+    private PaymentAuthorization paymentAuthorization = new PaymentAuthorization();
 
     /**
      * Constructor
@@ -32,7 +32,7 @@ public class CardTerminal {
      */
     public String newCardPayment(CreditCard creditCard, Amount amount, Receipt receipt){
         int cost = (int) amount.getCost();
-        boolean authorized = true;  // paymentAuthorization.authorizePayment(creditCard, cost);
+        boolean authorized = paymentAuthorization.authorizePayment(creditCard, cost);
         System.out.println(authorized);
         if (authorized)
             return receipt.createReceiptString();
