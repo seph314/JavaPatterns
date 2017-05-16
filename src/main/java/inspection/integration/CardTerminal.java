@@ -10,17 +10,30 @@ import se.kth.iv1350.payauth.CreditCard;
 import se.kth.iv1350.payauth.PaymentAuthorization;
 
 /**
- * Created by Anders on 2017-04-28.
+ * Represents a card terminal which can make a new payment
+ *
  */
 public class CardTerminal {
 
+    private static CardTerminal cardTerminal;
     private PaymentAuthorization paymentAuthorization = new PaymentAuthorization();
 
     /**
-     * Constructor
+     * Singleton constructor that prevents clients from using the constructor
      */
-    public CardTerminal() {
+    private  CardTerminal() {
 
+    }
+
+    /**
+     * Controls the accessible (allowed) instances by checking if
+     * there already is an instance and creates an instance if there is none.
+     */
+    public static CardTerminal getCardTerminalInstance(){
+        if (cardTerminal == null){
+            cardTerminal = new CardTerminal();
+        }
+        return cardTerminal;
     }
 
     /**

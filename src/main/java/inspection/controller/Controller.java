@@ -84,7 +84,7 @@ public class Controller {
         CreditCard creditCard = new CreditCard(pin, number, holder, expiryDate, CVC);
         Amount amount = new Amount(cost, payedAmount);
         Receipt receipt = new Receipt(amount, vehicle);
-        CardTerminal cardTerminal = new CardTerminal();
+        CardTerminal cardTerminal = CardTerminal.getCardTerminalInstance();
         return cardTerminal.newCardPayment(creditCard, amount, receipt);
     }
 
