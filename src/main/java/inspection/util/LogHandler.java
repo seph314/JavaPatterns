@@ -57,7 +57,7 @@ public class LogHandler {
     }
 
     /**
-     *
+     * Hanldes exceptions when loging
      * @param exception
      */
     public void logException(Exception exception) {

@@ -47,6 +47,8 @@ public class DatabaseManager {
             throw new IllegalLicenseNumberException(vehicle);
 
         InspectionProtocol inspectionProtocol = new InspectionProtocol();
+
+
         return inspectionProtocol.createDummyInspections();
     }
 }

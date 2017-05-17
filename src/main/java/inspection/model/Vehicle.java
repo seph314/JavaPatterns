@@ -14,7 +14,7 @@ public class Vehicle {
 
     /**
      * Vehicle constructor
-     * @param regNo
+     * @param regNo is the registrationnumber of a vehicle
      */
     public Vehicle(String regNo){
         this.regNo = regNo;
@@ -22,15 +22,15 @@ public class Vehicle {
 
     /**
      * Returns a vehicles registration number
-     * @return
+     * @return registrationnumber
      */
     public String getRegNo() {
         return regNo;
     }
 
-
     /**
      * Returns true if equal
+     * Used when searching for a vehicle in the emulated database array
      * @param o
      * @return
      */
@@ -46,6 +46,7 @@ public class Vehicle {
 
     /**
      * Hash code
+     * Used when searching for a vehicle in the emulated database array
      * @return
      */
     @Override

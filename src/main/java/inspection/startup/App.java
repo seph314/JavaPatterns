@@ -14,6 +14,11 @@ public class App extends Application {
         launch(args);
     }
 
+    /**
+     * Starts an alternative graphical view under development
+     * @param primaryStage
+     * @throws Exception
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Inspect vehicle");

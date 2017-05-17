@@ -58,6 +58,10 @@ public class InspectionTask {
         }
     }
 
+    /**
+     * Adds a obeserver for a inspection
+     * @param inspectionTaskObserver
+     */
     public  void addInspectionObserver(InspectionTaskObserver inspectionTaskObserver){
         inspectionTaskObservers.add(inspectionTaskObserver);
     }

@@ -47,6 +47,7 @@ public class View{
                 "start      = start inspection\n" +
                 "commands   = shows commands\n" +
                 "show       = shows number of inspections" +
+                "discount   = creates a custom receipt" +
                 "quit       = exit program\n");
     }
 
@@ -87,7 +88,7 @@ public class View{
                                 "\nTo perform payment type: pay");
                     } catch (IllegalLicenseNumberException e) {
                         logExceptions(e);
-                        System.out.println("There is no booked inspection for regnumberr: " + e.getVehicleWithIllegalLicenceNumber().getRegNo() +
+                        System.out.println("There is no booked inspection for regnumber: " + e.getVehicleWithIllegalLicenceNumber().getRegNo() +
                                 "\nTo try again with a another regnumber, type: find");
                     }
                     break;
@@ -142,6 +143,16 @@ public class View{
                     System.out.println("\nAll done!\nBravissimo!");
                     break;
 
+                case "discount":
+                    System.out.println("Enter cost: ");
+                    cost = Double.parseDouble(in.nextLine());
+                    System.out.println("Enter payed amount: ");
+                    payedAmount = Double.parseDouble(in.nextLine());
+                    System.out.println("Enter registrationnumber: ");
+                    regNo = in.nextLine();
+                    System.out.println("This is your receipt: " + controller.customReceipt(cost, payedAmount, regNo).createReceiptString());
+                    break;
+
                 case "commands":
                     showCommandList();
                     break;
@@ -150,7 +161,6 @@ public class View{
                     break;
             }
         }
-
         System.out.println("Thank you for using this system\n Good bye!");
     }
 }

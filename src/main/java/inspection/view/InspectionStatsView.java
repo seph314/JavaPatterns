@@ -2,7 +2,6 @@ package inspection.view;
 
 import inspection.model.InspectionTask;
 import inspection.model.InspectionTaskObserver;
-
 import java.util.List;
 
 /**

@@ -13,6 +13,7 @@ import java.util.List;
 /**
  * This is a personal test where I try to build an alternative graphical view
  * Expect limited functionality
+ * Not properly commented
  */
 public class MainView {
 
@@ -26,34 +27,55 @@ public class MainView {
     @FXML
     Label printOut;
 
-
+    /**
+     *
+     */
     public void initialize(){
 
     }
 
+    /**
+     *
+     */
     public void openButton(){
         controller.nextCustomer();
         printOut.setText("The door is open.\n(close when the customer arrived)");
     }
 
+    /**
+     *
+     */
     public void closeButton(){
         controller.closeDoor();
         printOut.setText("The door is closed.\nchoose find inspection");
     }
 
+    /**
+     *
+     */
     public  void  enterRegnumber(){
         printOut.setText("Enter registrationnumber (ABC123)");
     }
 
+    /**
+     *
+     */
     public void createStringFromInputField(){
         inputString = textInput.getText();
     }
 
+    /**
+     *
+     * @throws IllegalLicenseNumberException
+     */
     public void  findInspection() throws IllegalLicenseNumberException{
         cost = controller.findInspection(inputString);
         printOut.setText("The cost is " + cost + "$\nchoose pay");
     }
 
+    /**
+     *
+     */
     public void pay(){
         int pin = 1234;
         String number = "3141 5926 5358 9793";
@@ -66,6 +88,9 @@ public class MainView {
         printOut.setText("" + receipt);
     }
 
+    /**
+     *
+     */
     public void startInspection(){
         List<InspectionTask> inspectionProtocol = controller.startInspection();
         for (InspectionTask task : inspectionProtocol){

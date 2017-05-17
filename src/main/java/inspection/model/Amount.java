@@ -8,7 +8,6 @@ package inspection.model;
  * Created by Anders on 2017-04-25.
  * Amount contains the inspection cost and the payed amount from customer
  */
-
 public class Amount {
 
     private double cost;

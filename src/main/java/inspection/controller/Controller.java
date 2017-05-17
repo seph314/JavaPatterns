@@ -90,9 +90,23 @@ public class Controller {
     public String payWithCard(int pin, String number, String holder, YearMonth expiryDate, int CVC, double cost, double payedAmount) {
         CreditCard creditCard = new CreditCard(pin, number, holder, expiryDate, CVC);
         Amount amount = new Amount(cost, payedAmount);
-        Receipt receipt = new Receipt(amount, vehicle);
+        ReceiptBuilder rb = new ReceiptBuilder();
+        Receipt receipt = rb.setCost(cost).setPayedAmount(payedAmount).setRegnumber(vehicle.getRegNo()).build();
         CardTerminal cardTerminal = CardTerminal.getCardTerminalInstance();
         return cardTerminal.newCardPayment(creditCard, amount, receipt);
+    }
+
+    /**
+     * Creates a custom receipt where the inspector an choose cost, payedAmount and regNo
+     * @param cost the inspection cost (originally 500)
+     * @param payedAmount payed amount if payed by cache (not implemented yet)
+     * @param regoNo inspected vehicled registrationnumber
+     * @return a custom receipt
+     */
+    public Receipt customReceipt(double cost, double payedAmount, String regoNo){
+        ReceiptBuilder rb = new ReceiptBuilder();
+        Receipt receipt = rb.setCost(cost).setPayedAmount(payedAmount).setRegnumber(regoNo).build();
+        return receipt;
     }
 
     /**
