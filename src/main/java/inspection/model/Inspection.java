@@ -46,8 +46,4 @@ public class Inspection {
             return inspectionCost;
        throw new IllegalLicenseNumberException(vehicle);
     }
-
-    public List<InspectionTask> getInspectionProtocol() {
-        return inspectionProtocol;
-    }
 }

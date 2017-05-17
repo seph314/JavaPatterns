@@ -5,12 +5,13 @@
 package inspection.model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
  * The inspectionProtocol is a List of InspectionTasks
  */
-public class InspectionProtocol {
+public class InspectionProtocol implements Iterable<InspectionTask> {
 
     private List<InspectionTask> inspectionProtocol;
 
@@ -18,11 +19,12 @@ public class InspectionProtocol {
      * InspectionProtocol constructor
      */
     public InspectionProtocol() {
-       createDummyInspections();
+        createDummyInspections();
     }
 
     /**
      * creates dummy inspection list that emulates information gathered from the database
+     *
      * @return
      */
     public List<InspectionTask> createDummyInspections() {
@@ -32,5 +34,14 @@ public class InspectionProtocol {
         inspectionProtocol.add(new InspectionTask("steering", false));
 
         return inspectionProtocol;
+    }
+
+    /**
+     * Iterates over inspectionsTasks in a inspectionProtocol
+     * @return
+     */
+    @Override
+    public Iterator<InspectionTask> iterator() {
+        return inspectionProtocol.iterator();
     }
 }
