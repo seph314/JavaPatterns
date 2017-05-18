@@ -45,6 +45,7 @@ public class InspectionTask {
 
     /**
      * Set boolan true or false tp handle pass or fail of inspection task
+     * Notifes observers
      * @param passOrFail
      */
     public void setPassOrFail(boolean passOrFail) {

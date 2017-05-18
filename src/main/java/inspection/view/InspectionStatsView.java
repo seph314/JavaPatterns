@@ -23,6 +23,7 @@ public class InspectionStatsView implements InspectionTaskObserver {
 
     /**
      * Loops through a list of inspections
+     * Adds inspection observer
      * @param inspectionTaskList is a list of inspections
      */
     public void listenToTasks(List<InspectionTask> inspectionTaskList){
