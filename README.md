@@ -7,7 +7,7 @@ Java application with the MVC architecture. The program uses the terminal as pri
 #### Singleton pattern - Card Terminal
 #### Builder pattern - Recipee
 #### Observer pattern - Inspections
-#### MVC - Overall design of the archotecture
+#### MVC - Overall design of the architecture
 
 ## Demo - Terminal View
 ![alt triesDemo](https://github.com/seph314/inspectVehicle/blob/master/inspectVehicleDemo2.gif)
