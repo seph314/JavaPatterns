@@ -1,7 +1,7 @@
 # inspectvehicle
 
 ### School project - Ispect Vehicle
-Java application with the MVC architecture. The program uses the terminal as primary output, but I have also created the first part of a graphical interface with JavaFX.
+Java application with the MVC architecture. The program uses the terminal as primary output, but I have also created the first part of a graphical interface with JavaFX. I've added demos of both views.
 
 ## Patterns
 #### Singleton pattern - Card Terminal
